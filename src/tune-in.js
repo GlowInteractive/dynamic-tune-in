@@ -8,10 +8,12 @@ export default {
     return () => {
       if (isInDateRange()) {
         this.tuneIn = str
+      } else {
+        this.tuneIn = this.fallback
       }
     }
   },
-  createShowObj(fn, str) {
+  addDate(fn, str) {
     this.dates.push({ test: this.createShowFn(fn, str) })
   },
   create({ premiereDate, today, fallback }) {
@@ -27,26 +29,26 @@ export default {
   between(d1, d2) {
     return {
       show: str => {
-        this.createShowObj(() => dti.isBetween(d1, d2), str)
+        this.addDate(() => dti.isBetween(d1, d2), str)
       }
     }
   },
   after(d) {
     return {
       show: str => {
-        return this.createShowObj(() => dti.isAfter(d), str)
+        return this.addDate(() => dti.isAfter(d), str)
       }
     }
   },
   afterPremiere() {
     return {
-      show: str => this.createShowObj(() => dti.isAfterPremiere, str)
+      show: str => this.addDate(() => dti.isAfterPremiere, str)
     }
   },
   dayOfPremiere() {
     return {
       show: str => {
-        this.createShowObj(() => dti.isPremiere, str)
+        this.addDate(() => dti.isPremiere, str)
       }
     }
   },
