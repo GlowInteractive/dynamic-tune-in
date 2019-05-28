@@ -56,9 +56,6 @@ export default {
     this.recalculate()
     return this.tuneIn || this.fallback
   },
-  getCurrent() {
-    return this.tuneIn || this.fallback
-  },
   recalculate() {
     this.dates.forEach(date => date.test())
   }

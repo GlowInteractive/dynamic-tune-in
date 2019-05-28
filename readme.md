@@ -51,10 +51,10 @@ TuneIn.dayOfPremiere().show('.premiere-tune-in')
 
 _NOTE: if multiple cases are true - the last case satisfying the condition will win._
 
-Now that we've added tune in dates, all we need to do is call `TuneIn.getCurrent()` to get our current tune-in className.
+Now that we've added tune in dates, all we need to do is call `TuneIn.getElSelector()` to get our current tune-in className.
 
 ```javascript
-var tuneInClassName = TuneIn.getCurrent()
+var tuneInClassName = TuneIn.getElSelector()
 
 // get the element
 var tuneInEl = document.querySelector(tuneInEl)
