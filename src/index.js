@@ -1,4 +1,4 @@
-import TuneIn from './tune-in'
+import TuneIn from '../library/dynamic-tune-in'
 
 TuneIn.create({
   premiereDate: 'June 9',

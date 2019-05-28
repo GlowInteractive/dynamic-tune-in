@@ -1,6 +1,6 @@
 const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin') //installed via npm
-const buildPath = path.resolve(__dirname, '../', 'library')
+const buildPath = path.resolve(__dirname, '../', 'dist')
 
 module.exports = function(api) {
   return {
@@ -12,7 +12,8 @@ module.exports = function(api) {
     output: {
       filename: 'dynamic-tune-in.js',
       library: 'TuneIn',
-      libraryTarget: 'window',
+      globalObject: 'this',
+      libraryTarget: 'umd',
       libraryExport: 'default',
       path: buildPath
     },
