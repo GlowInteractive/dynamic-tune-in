@@ -1,7 +1,7 @@
 {
-  "name": "es6-webpack-starter",
-  "description": "A quick es6 start with scss and postcss",
-  "version": "1.0.0",
+  "name": "dynamictunein.js",
+  "description": "A package that compares today's date, to a premiere date, and returns a given string for that day.",
+  "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
@@ -9,6 +9,7 @@
     "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/preset-env": "^7.4.3",
     "autoprefixer": "^9.5.0",
+    "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.5",
     "babel-preset-env": "^1.7.0",
     "browser-sync": "^2.26.5",
@@ -38,7 +39,10 @@
   "scripts": {
     "start": "nodemon --watch config --exec 'webpack-dev-server --config config/webpack.dev.js --mode development'",
     "build": "webpack --config config/webpack.prod.js --mode production",
-    "build-lib": "webpack  --config config/webpack.lib.js --mode production --verbose"
+    "build-lib": "webpack  --config config/webpack.lib.js --mode production --verbose",
+    "test": "nodemon --watch tests --exec 'jest --verbose'"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "jest": "^24.8.0"
+  }
 }
