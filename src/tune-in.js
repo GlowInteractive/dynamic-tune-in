@@ -1,22 +1,18 @@
-import dti from './dti.js'
+import dti from './date-helper.js'
 
 export default {
   tuneIn: false,
   fallback: false,
-  getElSelector() {
-    return this.tuneIn || this.fallback
-  },
-  createShowFn(show) {
-    return str => {
-      if (show) {
+  dates: [],
+  createShowFn(isInDateRange, str) {
+    return () => {
+      if (isInDateRange()) {
         this.tuneIn = str
       }
     }
   },
-  createShowObj(show) {
-    return {
-      show: this.createShowFn(show)
-    }
+  createShowObj(fn, str) {
+    this.dates.push({ test: this.createShowFn(fn, str) })
   },
   create({ premiereDate, today, fallback }) {
     this.fallback = fallback
@@ -29,15 +25,36 @@ export default {
     dti.setToday(today)
   },
   between(d1, d2) {
-    return this.createShowObj(dti.isBetween(d1, d2))
+    return {
+      show: str => {
+        this.createShowObj(() => dti.isBetween(d1, d2), str)
+      }
+    }
   },
   after(d) {
-    return this.createShowObj(dti.isAfter(d))
+    return {
+      show: str => {
+        return this.createShowObj(() => dti.isAfter(d), str)
+      }
+    }
   },
   afterPremiere() {
-    return this.createShowObj(dti.isAfterPremiere)
+    return {
+      show: str => this.createShowObj(() => dti.isAfterPremiere, str)
+    }
   },
   dayOfPremiere() {
-    return this.createShowObj(dti.isPremiere)
+    return {
+      show: str => {
+        this.createShowObj(() => dti.isPremiere, str)
+      }
+    }
+  },
+  getElSelector() {
+    this.recalculate()
+    return this.tuneIn || this.fallback
+  },
+  recalculate() {
+    this.dates.forEach(date => date.test())
   }
 }
