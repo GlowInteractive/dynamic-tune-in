@@ -2,7 +2,7 @@
   "name": "dynamic-tune-in",
   "description": "A package that compares today's date, to a premiere date, and returns a given string for that day.",
   "author": "Adrien Hobbs @ GLOW",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/dynamic-tune-in.js",
   "license": "MIT",
   "files": [
