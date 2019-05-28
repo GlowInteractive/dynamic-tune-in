@@ -4,7 +4,7 @@ export default {
   tuneIn: false,
   fallback: false,
   dates: [],
-  createShowFn(isInDateRange, str) {
+  createTestFn(isInDateRange, str) {
     return () => {
       if (isInDateRange()) {
         this.tuneIn = str
@@ -14,7 +14,7 @@ export default {
     }
   },
   addDate(fn, str) {
-    this.dates.push({ test: this.createShowFn(fn, str) })
+    this.dates.push({ test: this.createTestFn(fn, str) })
   },
   create({ premiereDate, today, fallback }) {
     this.fallback = fallback
