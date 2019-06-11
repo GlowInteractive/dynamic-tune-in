@@ -1,5 +1,6 @@
 import dti from './date-helper.js'
 
+// add a before function??
 export default {
   tuneIn: false,
   fallback: false,
@@ -8,8 +9,6 @@ export default {
     return () => {
       if (isInDateRange()) {
         this.tuneIn = str
-      } else {
-        this.tuneIn = this.fallback
       }
     }
   },

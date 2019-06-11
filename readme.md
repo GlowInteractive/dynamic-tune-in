@@ -61,3 +61,5 @@ var tuneInEl = document.querySelector(tuneInEl)
 
 // now do something with element. show, hide, animate, etc...
 ```
+
+@todo - add an execute method on tunein that runs a fn rather than returning a string.
