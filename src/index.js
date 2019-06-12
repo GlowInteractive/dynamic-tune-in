@@ -13,12 +13,13 @@ TuneIn.between('June 10', 'June 21').show('.before')
 // TuneIn.between('June 17', 'June 22').show('.all-new-sunday')
 // TuneIn.between('June 23', 'June 24').show('.all-new-tonight')
 TuneIn.dayOfPremiere().show('.tonight')
+TuneIn.afterPremiere().show('.after')
 
-TuneIn.updateToday('June 14')
-console.log('June 14', TuneIn.getElSelector())
+TuneIn.updateToday('June 5')
+console.log('June 5', TuneIn.getElSelector())
 
 TuneIn.updateToday('July 1')
 console.log('July 1', TuneIn.getElSelector())
 
 TuneIn.updateToday('July 2')
-console.log('June 2', TuneIn.getElSelector())
+console.log('July 2', TuneIn.getElSelector())
